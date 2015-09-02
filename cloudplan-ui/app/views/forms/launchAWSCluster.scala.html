@@ -1,0 +1,66 @@
+@(message: String, user: User)
+
+@main(message, user) {
+    <div class="panel col-sm-offset-3 col-sm-6">
+        <div class="panel-heading">
+            <h4>Launch a cluster</h4>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <form action="@routes.Tasks.launchAWSCluster" role="form" class="form" method="post">
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control required" name="name" placeholder="Name your cluster">
+                    <span class="help-block">This will be used to identify all associated resources on the cloud</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Image</strong></label>
+                    <input class="form-control" name="image" placeholder="Default: us-east-1/ami-baeda9d2"/>
+                    <span class="help-block">Select an image to use in your VMs in</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Region</strong></label>
+                    <input class="form-control" name="region" placeholder="Default: us-east-1"/>
+                    <span class="help-block">Select a region to host your VMs in. Take care of regional quotas</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Machine</strong></label>
+                    <input class="form-control" name="machine" placeholder="Default: m1.large"/>
+                    <span class="help-block">Select a machine type for your cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Instances</strong></label>
+                    <input type="number" class="form-control" name="instances" placeholder="Default: 4">
+                    <span class="help-block">A minimum of 4 nodes are recommended for a High Availability Mesos cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Spot price</strong></label>
+                    <input type="number" class="form-control" name="spotPrice" placeholder="Multiply by 1000. Leave blank for on-demand">
+                    <span class="help-block">You need to check the latest spot prices before entering here</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Persistent Disk Size</strong></label>
+                    <input type="number" class="form-control" name="diskSize" placeholder="Default (in GB): 10">
+                    <span class="help-block">Enter the size of the additional disk you want to use</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Users</strong></label>
+                    <input type="text" class="form-control" name="users" placeholder="Usernames">
+                    <span class="help-block">Names of those who are going to use the cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Index</strong></label>
+                    <input type="text" class="form-control" name="index" placeholder="Default: 0">
+                    <span class="help-block">Starting index of numbering</span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="sshUser" value="admin">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}

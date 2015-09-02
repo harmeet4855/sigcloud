@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html   lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>
+
+        SigCloud Monitoring
+
+    </title>
+
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Start Bootstrap Custom CSS -->
+    <link href="css/startbootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/side_accordion.css" rel="stylesheet" type="text/css">
+    <link href="css/monitor.css" rel="stylesheet" type="text/css">
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body ng-app="monitor" ng-controller="MonitorController">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Index.html">SigCloud</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Management<b class="caret"></b></a>
+                    <ul  class="dropdown-menu">
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Service_Management.html">Service Management</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Node_Management.html">Node Management</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-newspaper-o"></i> Monitoring <b class="caret"></b></a>
+                    <ul  class="dropdown-menu">
+                        <li class="dropdown-header" style="font-size: medium">
+                            Clusters
+                        </li>
+
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_1" ng-click="cluster_show(0)">Cluster1</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_2" ng-click="cluster_show(1)">Cluster2</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html" ng-click="cluster_show(2)">All Clusters</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<div class="btn-group" id="symbol" role="group" aria-label="...">
+    <div><h4>Symbols</h4>
+        <button type="button"  class="btn   btn-success package_btn ">
+            OK
+        </button>
+        <button type="button"  class="btn btn-warning  package_btn ">
+            WARNING
+        </button>
+        <button type="button"  class="btn btn-danger btn-default package_btn ">
+            DANGER
+        </button>
+    </div>
+</div>
+<div class="container accordion-main"  ng-repeat="cluster in clusters" id="{{cluster.cluster_ref}}">
+
+
+    <div class=" col-lg-12  cluster_boxes"  >
+        <!--     <span class="jquery-accordion-menu-label"> 10 </span>-->
+        <div class="row cluster_head ">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="col-lg-3">
+                        <h1><span ng-model="cluster.cluster_name">{{cluster.cluster_name}}</span> <span ng-model="cluster.cluster_status"><button type="button" ng-class="{ 'btn-warning': cluster.cluster_status == 1 , 'btn-success': cluster.cluster_status == '0',
+               'btn-danger': cluster.cluster_status == 2  }"class="btn package_btn "><i  class="fa fa-cog"></i></button></span></h1>
+                    </div>
+                    <div class="col-lg-9">
+                        <h2>Machine-Service-Specs Monitoring</h2>
+                        <h4>Pick a machine to monitor</h4>
+
+                    </div>
+                </div>
+                <div class="col-lg-12 machine-panel">
+                            <button type="button" ng-class="{ 'btn-warning': machine.machine_status == 1 , 'btn-success': machine.machine_status == '0',
+               'btn-danger': machine.machine_status == 2  }" id="machine{{$parent.$index}}{{$index}}" ng-click="machine_show($parent.$index,$index)" ng-repeat="machine in cluster.cluster_machines" class="btn mech_btn package_btn ">
+                                <span   ng-model="machine.machine_name">
+                                    {{machine.machine_name}}
+                                </span>
+                            </button>
+
+
+                        <button type="button"  id="machine{{$index}}All"  ng-click="machine_show($index,clustmech_len)" class="btn btn-default mech_btn  package_btn ">
+                            <span>
+                                <b>All Machines</b>
+                            </span>
+                        </button>
+
+                </div>
+            </div>
+        </div>
+        <div class="row well   cluster_body" ng-repeat = "machine in cluster.cluster_machines" >
+            <div class="col-lg-12 ">
+                <div class=" col-lg-3 ">
+
+                    <div id="jquery-accordion-menu"  class="jquery-accordion-menu blue ">
+                        <div class="jquery-accordion-menu-header">
+                            <h4 ><span class = "machine_title" ng-model="machine.machine_name">
+                                {{machine.machine_name}}</span><span class="service_stat"  ng-model="machine.machine_status"><button type="button" ng-class="{ 'btn-warning': machine.machine_status == 1 , 'btn-success': machine.machine_status == '0',
+               'btn-danger': machine.machine_status == 2  }" class="btn package_btn "></button></span></h4>
+
+                        </div>
+                        <ul>
+                            <li ng-repeat = "service in machine.machine_services" ><a href="javascript:void(0)"><i  class="fa fa-cog"></i><span ng-model="service.service_name">{{service.service_name}}</span>
+                                </a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="container-fluid col-lg-9 col-sm-9 col-xs-12">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3>Service-Specs Monitoring</h3>
+                                <!--<h6>{{cluster.cluster_machines[0].machine_services[0].service_specs.http_service.last_hard_state}}</h6>-->
+                                <br>
+
+                            </div>
+                            <div class="col-lg-4" ng-repeat = "service in machine.machine_services">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h4>{{service.service_name}}</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class = "specs">
+                                            <li><b>Current State : </b><span class="service_stat pull-right" ng-model="service.service_specs.current_state"><button type="button" ng-class="{ 'btn-warning': service.service_specs.current_state == 1 , 'btn-success': service.service_specs.current_state == '0',
+               'btn-danger': service.service_specs.current_state == 2  }" class="btn package_btn "></button></span></li>
+                                            <li><b>Last Hard State : </b><span class="service_stat pull-right" ng-model="service.service_specs.last_hard_state"><button type="button" ng-class="{ 'btn-warning': service.service_specs.last_hard_state == 1 , 'btn-success': service.service_specs.last_hard_state == '0',
+               'btn-danger': service.service_specs.last_hard_state == 2  }" class="btn package_btn "></button></span></li>
+                                            <li><b>Last Check</b> : {{service.service_specs.last_check*1000 |  date:'MM/dd/yyyy'}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/accordion.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(
+            function(){
+                jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+
+            })
+</script>
+<!--<script type="text/javascript" src="js/services.js"></script>-->
+<script type="text/javascript" src="js/monitor.js"></script>
+<script type="text/javascript" src="js/monitor_jquery.js"></script>
+
+</body>
+</html>
+

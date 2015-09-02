@@ -1,0 +1,43 @@
+@(message: String, user: User)
+
+@main(message, user) {
+    <br/>
+    <div class="jumbotron">
+        <h2>Welcome to Sigmoid Cloudplan!</h2>
+        <p>Unlock the full potential of the cloud. Launch your first cluster</p>
+        <p>
+            <a class="btn btn-danger btn-lg" href="@routes.Application.launchGCECluster" role="button">GCE</a>
+            <a class="btn btn-danger btn-lg" href="@routes.Application.launchAWSCluster" role="button">AWS</a>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h5>Built on Apache Jclouds</h5>
+                    <p>Manage a hybrid datacenter by using Jclouds support for over 30 cloud providers</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h5>Filled with Akka and Play goodness</h5>
+                    <p>For blazing fast launch times and completely non-blocking operations</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h5>Customizable recipes</h5>
+                    <p>Install any service you want on a cluster using our easy API</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,56 @@
+@(message: String, user: User)
+
+@main(message, user) {
+    <div class="panel col-sm-offset-3 col-sm-6">
+        <div class="panel-heading">
+            <h4>Run a script on cluster</h4>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <form action="@routes.Tasks.runScriptOnCluster" role="form" class="form" method="post">
+                <div class="form-group">
+                    <label class="control-label"><strong>Provider</strong></label>
+                    <select class="form-control" id="selectProvider" name="provider">
+                        <option value="google-compute-engine">Google Compute Engine</option>
+                        <option value="aws-ec2">Amazon EC2</option>
+                    </select>
+                    <span class="help-block">Select the provider where your cluster is running</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" name="name" placeholder="Name of cluster">
+                    <span class="help-block">This will be used to identify all associated resources on the cloud</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" name="detail" placeholder="Command details">
+                    <span class="help-block">Explain what the script does</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" name="command" placeholder="Enter the inline script">
+                    <span class="help-block">Enter the command that you want to run on all the cluster machines</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" name="user" placeholder="User">
+                    <span class="help-block">The user to execute the command from</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>SSH Key</strong></label>
+                    <select class="form-control" name="sshUser">
+                        <option value="ajay">Ajay GCE</option>
+                        <option value="admin">Ajay EC2</option>
+                    </select>
+                    <span class="help-block">Select an SSH key for your cluster</span>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="@routes.Assets.at("javascripts/launch.js")" type="text/javascript"></script>
+}

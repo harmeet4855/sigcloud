@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+
+
+   <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <title>
+          
+            Welcome to SigCloud
+          
+        </title>
+
+
+        <!-- Fonts -->
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Start Bootstrap Custom CSS -->
+        <link href="css/startbootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/side_accordion.css" rel="stylesheet" type="text/css">
+        <link href="css/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+
+
+        
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<body ng-app="cart">
+<div ng-controller="cloudController">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Index.html">SigCloud</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Management<b class="caret"></b></a>
+                        <ul  class="dropdown-menu">
+                            <li >
+                                <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Service_Management.html">Service Management</a>
+                            </li>
+                            <li >
+                                <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Node_Management.html">Node Management</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-newspaper-o"></i> Monitoring <b class="caret"></b></a>
+                        <ul  class="dropdown-menu">
+                            <li class="dropdown-header" style="font-size: medium">
+                                Clusters
+                            </li>
+
+                            <li >
+                                <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_1">Cluster1</a>
+                            </li>
+                            <li >
+                                <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_2">Cluster2</a>
+                            </li>
+                            <li >
+                                <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html">All Clusters</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <header class="marquee">
+            <div class="container">
+                <span class="brand-name">Welcome to SigCloud</span>
+                <h1>Unlock the full potential of the cloud. Launch your first cluster.</h1>
+                <p>Choose the Cloud Services with which you want to deploy your Cluster.</p>
+                <a href="#accordion-main" class="btn btn-default btn-cta"><i class="fa fa-chevron-circle-right"></i> AWS</a>
+                <a href="#accordion-main" class="btn btn-default btn-cta" ng-click="load_gce()"><i class="fa fa-chevron-circle-right"></i> GCE</a>
+                <p><br>Or upload your machines on SigCloud's Platform  </p><a href="#accordion-main"  class="btn btn-warning  upload_btn ">UPLOAD</a>
+            </div>
+        </header>
+
+    <a class="btn btn-lg btn-default btn-success combined_float final machines_launched" ><b>Deploy</b></a>
+    <a class="btn btn-default" id="menu-toggle">Hide Steps</a>
+
+    <div class="container" id="accordion-main">
+        <div class="row">
+            <!--     <span class="jquery-accordion-menu-label"> 10 </span>-->
+            <div class="content col-lg-3">
+
+                <div id="jquery-accordion-menu" class="jquery-accordion-menu blue ">
+                    <div class="jquery-accordion-menu-header">
+                         Steps
+                    </div>
+                    <ul>
+                        <li id="step1" class="active"><a id="step1_1" href="javascript:void(0)"><i class="fa fa-cog"></i> Cluster Creation
+
+                        <span id="bar1">
+                        <br><br>
+                            <div class="progress" >
+                              <div class="disp_bar progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="sr-only">40% Complete (success)</span>
+                              </div>
+                            </div>
+                        </span> </a></li>
+                        <li id="step2"><a id="step2_2" href="javascript:void(0)"><i  class="fa fa-cog"></i> Choose Services </a></li>
+                        <li id="step3"><a id="step3_3" href="javascript:void(0)"><i class="fa fa-cog"></i> Step 3 </a></li>
+                        <li id="step4"><a id="step4_4" href="javascript:void(0)" class=""><i class="fa fa-cog"></i> Step 4 <span class="submenu-indicator">+</span></a>
+                            <ul class="submenu" style="display: none;">
+                                <li><a href="javascript:void(0)"> Sub 1 </a></li>
+                                <li><a href="javascript:void(0)"> Sub 2 </a></li>
+                            </ul>
+                        </li>
+                        <li id="step5"><a id="step5_5" href="javascript:void(0)"><i class="fa fa-cog"></i> Step 5 </a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="container-fluid col-lg-9 onpremise description ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Upload Your Machines/Grids    <small>      Or upload the JSON for same. <a href="javascript:void(0)" class="btn btn-default "><span class="glyphicon glyphicon-upload"></span></a></small></h1>
+                        <br>
+                        <h5>Choose what you want to upload.</h5>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default " id = "upload_mech">Machines</button>
+                            <button type="button" class="btn btn-default " id = "upload_grid">Grids</button>
+                        </div>
+                        <div class="premise_mech" >
+                            <form >
+                                <div class="form-group">
+                                    <label for="Clustername">Clustername</label>
+                                    <input  type="text" class="form-control" id="Clustername" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cluster_num">No. of instances for Cluster </label>
+                                    <input type="number" class="form-control" id="Cluster_num" placeholder="Number">
+                                </div>
+                                <div class="machine_types">
+                                    <p><b>Instance Type</b></p>
+                                    <div class="well row">
+                                        <div class="col-lg-3">
+                                            <img class="machine" src="images/machine.svg">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p>n1-Standard-1<br>vCPU</p>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <p><b>Memory</b><br>3.75 GB</p>
+                                        </div>
+                                        <!-- <div class="col-lg-3">
+                                            <a class="btn btn-default">Change</a>
+                                        </div> -->
+                                        <div class="col-lg-3">
+                                            <!--<div class="dropdown">-->
+                                                <!--<a href="#" class="dropdown-toggle " id="list_items" data-toggle="dropdown" aria-expanded="false">List <b class="caret"></b></a>-->
+                                                <!--<ul class="dropdown-menu">-->
+                                                    <!--<li>-->
+                                                        <!--<a href="#">Machine 1</a>-->
+                                                    <!--</li>-->
+                                                    <!--<li>-->
+                                                        <!--<a href="#"> Machine 2</a>-->
+                                                    <!--</li>-->
+                                                <!--</ul>-->
+                                            <!--</div>-->
+                                            <select  class="form-control">
+                                                <option>Machine 1</option>
+                                                <option>Machine 2</option>
+                                                <option>Machine 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="image_types">
+                                    <p><b>Image Type</b></p>
+                                    <div class="well row">
+                                        <div class="col-lg-3">
+                                            <img class="image" src="images/image.svg">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <p>New 10 GB standard persistent disk<br><b>Image</b><br>Debian/GNU Linux</p>
+                                        </div>
+
+                                        <!-- <div class="col-lg-3">
+                                            <a class="btn btn-default">Change</a>
+                                        </div> -->
+                                        <div class="col-lg-3">
+                                            <!--<div class="dropdown">-->
+                                                <!--<a href="#" class="dropdown-toggle " id="list_items" data-toggle="dropdown" aria-expanded="false">List <b class="caret"></b></a>-->
+                                                <!--<ul class="dropdown-menu">-->
+                                                    <!--<li>-->
+                                                        <!--<a href="#">Image 1</a>-->
+                                                    <!--</li>-->
+                                                    <!--<li>-->
+                                                        <!--<a href="#"> Image 2</a>-->
+                                                    <!--</li>-->
+                                                <!--</ul>-->
+                                            <!--</div>-->
+                                            <select  class="form-control">
+                                                <option>Image 1</option>
+                                                <option>Image 2</option>
+                                                <option>Image 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="regions">
+                                    <p><b>Regions for Datacenters</b></p>
+                                    <div class="wrapper well">
+
+                                        <div class="jcarousel-wrapper">
+                                            <div class="jcarousel">
+                                                <ul>
+                                                    <li><img src="images/img1.jpg" alt="Image 1"></li>
+                                                    <li><img src="images/img2.jpg" alt="Image 2"></li>
+                                                    <li><img src="images/img3.jpg" alt="Image 3"></li>
+                                                    <li><img src="images/img4.jpg" alt="Image 4"></li>
+
+                                                </ul>
+                                            </div>
+
+                                            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                                            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                                            <p class="jcarousel-pagination"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cluster_network">Network </label>
+                                    <input type="text" class="form-control" id="Cluster_network" placeholder="Default: Sigmoid-Private">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cluster_users">Users for Cluster </label>
+                                    <input type="text" class="form-control" id="Cluster_users" placeholder="Usernames">
+                                </div>
+                                <a href="#accordion-main" class="btn btn-default btn-lg" id="premise_mech_deploy"><b>Create Cluster</b></a>
+                            </form>
+                        </div>
+                        <div class="premise_grid">
+                            <form>
+                                <div class="premisegridwrap">
+                                    <div class="premisegrid well">
+                                        <h3 class="premisegridhead">Grid 1 </h3><button type="button" class="btn btn-default premiseround ">   <span class="premisesign  glyphicon glyphicon-plus pull-right"></span></button>
+                                        <div class="form-group">
+                                            <label for="Cluster_num">No. of instances for Cluster </label>
+                                            <input type="number" class="form-control" id="Cluster_num" placeholder="Number">
+                                        </div>
+                                        <div class="panel machine_types">
+                                            <div class=" row">
+                                                <div class="col-lg-3">
+                                                    <img class="machine" src="images/machine.svg">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <p>n1-Standard-1<br>vCPU</p>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <p><b>Memory</b><br>3.75 GB</p>
+                                                </div>
+                                                <!-- <div class="col-lg-3">
+                                                    <a class="btn btn-default">Change</a>
+                                                </div> -->
+                                                <div class="col-lg-3">
+                                                    <!--<div class="dropdown">-->
+                                                        <!--<a href="#" class="dropdown-toggle " id="list_items" data-toggle="dropdown" aria-expanded="false"><b>Instance Type</b><b class="caret"></b></a>-->
+                                                        <!--<ul class="dropdown-menu">-->
+                                                            <!--<li>-->
+                                                                <!--<a href="#">Machine 1</a>-->
+                                                            <!--</li>-->
+                                                            <!--<li>-->
+                                                                <!--<a href="#"> Machine 2</a>-->
+                                                            <!--</li>-->
+                                                        <!--</ul>-->
+                                                    <!--</div>-->
+                                                    <select  class="form-control">
+                                                        <option>Machine 1</option>
+                                                        <option>Machine 2</option>
+                                                        <option>Machine 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel image_types">
+                                            <div class=" row">
+                                                <div class="col-lg-3">
+                                                    <img class="image" src="images/image.svg">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <p>New 10 GB standard persistent disk<br><b>Image</b><br>Debian/GNU Linux</p>
+                                                </div>
+
+                                                <!-- <div class="col-lg-3">
+                                                    <a class="btn btn-default">Change</a>
+                                                </div> -->
+                                                <div class="col-lg-3">
+                                                    <!--<div class="dropdown">-->
+                                                        <!--<a href="#" class="dropdown-toggle " id="list_items" data-toggle="dropdown" aria-expanded="false"><b>Image Type</b><b class="caret"></b></a>-->
+                                                        <!--<ul class="dropdown-menu">-->
+                                                            <!--<li>-->
+                                                                <!--<a href="#">Image 1</a>-->
+                                                            <!--</li>-->
+                                                            <!--<li>-->
+                                                                <!--<a href="#"> Image 2</a>-->
+                                                            <!--</li>-->
+                                                        <!--</ul>-->
+                                                    <!--</div>-->
+                                                    <select  class="form-control">
+                                                        <option>Image 1</option>
+                                                        <option>Image 2</option>
+                                                        <option>Image 3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#accordion-main" class="btn btn-default btn-lg" id="premise_grid_deploy"><b>Create Cluster</b></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid col-lg-9 description1 description" >
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Start Creating Your First Cluster</h1>
+                        <div class="form_elements" ng-controller="FormController">
+                            <form>
+                                <div class="form-group">
+                                    <label for="Clustername">Clustername</label>
+                                    <input type="text" ng-model="main_wrap.cluster_name" class="form-control" id="Clustername" placeholder="Name">
+                                </div>
+                                <div class="gridwrap">
+                                    <div class="grid well">
+                                        <h3 class="gridhead">Grid 1 </h3><button type="button" ng-click="push_grid()" class="btn btn-default round ">   <span class="sign  glyphicon glyphicon-plus pull-right"></span></button>
+                                        <div class="form-group">
+                                            <label for="Cluster_num">No. of instances for Cluster </label>
+                                            <input type="number" ng-model="main_wrap.grids[counter].cluster_grid_num" class="form-control" id="Cluster_num{{counter}}" placeholder="Number">
+                                        </div>
+                                        <div class="panel machine_types">
+                                            <div class=" row">
+                                                <div class="col-lg-3">
+                                                    <img class="machine" src="images/machine.svg">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <!--<p>n1-Standard-1<br>vCPU</p>-->
+                                                    <p>{{store}}</p>
+
+                                                    <p>{{main_wrap.grids[counter].cluster_grid_machinetype}}</p>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <p><b>Memory</b><br>3.75 GB</p>
+                                                </div>
+                                                <!-- <div class="col-lg-3">
+                                                    <a class="btn btn-default">Change</a>
+                                                </div> -->
+                                                <div class="col-lg-3">
+
+                                                    <select  ng-model="beta_map" ng-change="mech()"  id="Cluster_mech{{counter}}" class="form-control">
+                                                        <option value="{{mtype}}"  ng-repeat="mtype in machine_types">{{mtype.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel image_types">
+                                            <div class=" row">
+                                                <div class="col-lg-3">
+                                                    <img class="image" src="images/image.svg">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <p>{{main_wrap.grids[counter].cluster_grid_imagetype}}</p>
+                                                    <!--<p>New 10 GB standard persistent disk<br><b>Image</b><br>Debian/GNU Linux</p>-->
+                                                </div>
+
+                                                <!-- <div class="col-lg-3">
+                                                    <a class="btn btn-default">Change</a>
+                                                </div> -->
+                                                <div class="col-lg-3">
+                                                    <select  ng-model="main_wrap.grids[counter].cluster_grid_imagetype" id="Cluster_img{{counter}}" class="form-control">
+                                                        <option ng-repeat="itype in images">{{itype.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="regions">
+                                    <p><b>Regions for Datacenters</b></p>
+                                    <div class="wrapper well">
+
+                                        <div class="jcarousel-wrapper">
+                                            <div class="jcarousel">
+                                                <ul>
+                                                    <li><img src="images/img1.jpg" alt="Image 1"></li>
+                                                    <li><img src="images/img2.jpg" alt="Image 2"></li>
+                                                    <li><img src="images/img3.jpg" alt="Image 3"></li>
+                                                    <li><img src="images/img4.jpg" alt="Image 4"></li>
+
+                                                </ul>
+                                            </div>
+
+                                            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                                            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                                            <p class="jcarousel-pagination"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cluster_network">Network </label>
+                                    <input type="text" ng-model="main_wrap.cluster_network" class="form-control" id="Cluster_network" placeholder="Default: Sigmoid-Private">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Cluster_users">Users for Cluster </label>
+                                    <input type="text" ng-model="main_wrap.cluster_users" class="form-control" id="Cluster_users" placeholder="Usernames">
+                                </div>
+                                <pre>
+                                    form : {{main_wrap|json}}
+                                </pre>
+                                <a href="#accordion-main" class="btn btn-default btn-lg"  id="deploy"><b>Create Cluster</b></a>
+                                <span id="bar2">
+                                <br><br>
+                                    <div class="progress" >
+                                      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                      </div>
+                                    </div>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid description1_updated col-lg-9 description">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h1>Cluster Deployment in Progress</h1>
+                            </div>
+                            <div class="col-lg-2" id="abort">
+                                <a class="btn btn-default btn-danger" >Abort</a>
+                            </div>
+                        </div>
+                        <div id="wrap_progress">
+                            <div class = "row">
+                                <div class="col-lg-6">Machine 1</div>
+                                <div class="col-lg-6">
+                                   <div class="progress" >
+                                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class="col-lg-6">Machine 2</div>
+                                <div class="col-lg-6">
+                                   <div class="progress" >
+                                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class="col-lg-6">Machine 3</div>
+                                <div class="col-lg-6">
+                                   <div class="progress" >
+                                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class="col-lg-6">Machine 4</div>
+                                <div class="col-lg-6">
+                                   <div class="progress" >
+                                          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <p>Overall</p>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="progress" >
+                                      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div   ng-controller="StoreController as store" class="container-fluid col-lg-9 description description2" >
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <h1>Choose the Services you want for your Cluster</h1>
+                            </div>
+                            <div class="col-lg-3" id="abort">
+                                <a class="btn btn-default btn-danger" >Abort Previous Step</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="btn-group" role="group" aria-label="...">
+                          <button type="button" class="btn btn-default package_btn">Packaged Services</button>
+                          <button type="button" class="btn btn-default custom_btn">Custom Services</button>
+                          <button type="button" class="btn btn-default catalog_btn">Catalog </button>
+                        </div>
+                        <div id="packages">
+                            <!-- Page Header -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="page-header">Packaged Services for Cluster
+                                        <small>Packaged Services</small>
+                                    </h2>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <!-- Projects Row -->
+                            <div class="row">
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Bundle Title</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id = "{{bundle.id}}" ng-repeat="bundle in store.bigproducts" class="col-md-4 bundle-item">
+                                    <a href="#" data-toggle="modal" data-target="#myModal">
+                                        <img class="img-responsive" ng-src="{{bundle.img}}" alt="">
+                                    </a>
+                                    <div class="checkbox pack_check pull-right">
+                                        <label>
+                                            <input ng-click="store.check($index)" ng-model="bundle.selected" type="checkbox">
+                                        </label>
+
+                                    </div>
+                                    <h3>
+
+                                        <div id="projhead">{{bundle.title}}</div>
+                                    </h3>
+                                    <p>{{bundle.description}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="custom">
+                            <!-- Page Header -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="page-header">Customized package for Cluster
+                                        <small>Custom Services</small>
+                                    </h2>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                            <div class="row ">
+                                <div class="col-lg-12">
+                                    <h3 class="page-header"><b>My</b> Service Pack
+                                        <small>Click on the services you want to remove.</small>
+                                    </h3>
+                                    <div id="service_cart" class="well row">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="cartwrap" class="row">
+                                <div class="col-lg-12">
+                                    <h3 class="page-header">
+                                        Pick the Services
+                                        <small>Click on the services you want to add.</small>
+                                    </h3>
+                                </div>
+                                <div id = "{{service.id1}}" ng-repeat="service in store.products" class="col-md-4 service-item">
+                                    <a  class="carters" id="{{tab}}" href="#" ng-click="tab = $index + 1" >
+                                        <img class="img-responsive custom_img"  ng-src ="{{service.img}}" alt="">
+                                    </a>
+                                    <h3>
+                                        <div id="projhead">{{service.title}}</div>
+                                    </h3>
+                                    <p>{{service.description}}</p>
+                                </div>
+                            </div>
+
+                            <hr>
+                        </div>
+                        <div id="catalog">
+                            <!-- Page Header -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="page-header">Services we Provide
+                                        <small>Catalog</small>
+                                    </h2>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <!-- Projects Row -->
+                            <div class="row">
+
+                                <div id = "{{service.id}}" ng-repeat="service in store.products" class="col-md-4 service-item">
+                                    <a href="#">
+                                        <img class="img-responsive custom_img"  ng-src="{{service.img}}" alt="">
+                                    </a>
+                                    <h3>
+                                        <div id="projhead">{{service.title}}</div>
+                                    </h3>
+                                    <p>{{service.description}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Copyright &copy; 2015  Sigmoid</h6>
+            </div><!-- end col-sm-2 -->
+
+            <div class="col-sm-4">
+                <h6>About Us</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </div><!-- end col-sm-4 -->
+
+            <div class="col-sm-2">
+                <h6>Navigation</h6>
+                <ul class="unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Monitoring</a></li>
+                    <li><a href="#">Management</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div><!-- end col-sm-2 -->
+
+            <div class="col-sm-2">
+                <h6>Follow Us</h6>
+                <ul class="unstyled">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Google Plus</a></li>
+                </ul>
+            </div><!-- end col-sm-2 -->
+
+            <div class="col-sm-2">
+                <h6>Coded with <span class="glyphicon glyphicon-heart"></span><br>by ....</h6>
+            </div><!-- end col-sm-2 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+    </footer>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="js/jcarousel.responsive.js"></script>
+<script type="text/javascript" src="js/accordion.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(
+    function(){
+        jQuery("#jquery-accordion-menu").jqueryAccordionMenu(); 
+        
+    }); 
+</script>
+<script type="text/javascript" src="js/cloud.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+
+</body>
+</html>

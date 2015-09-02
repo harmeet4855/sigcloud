@@ -1,0 +1,92 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+.navbar-inverse{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-brand>img{
+    max-width:80px ;
+}
+
+.navbar-inverse .navbar-nav>li>a,.navbar-inverse .navbar-brand{
+    color: #777;
+
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+    color: #000;
+}
+
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover{
+        color: #000;
+}
+
+body {
+    padding-top: 50px;
+   
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6,.navbar-brand,.brand-name {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400
+}
+
+.marquee{
+background-color: rgb(184, 77, 69);
+background-image: url(images/bg.png);
+color: rgb(255, 255, 255);
+padding-bottom: 150px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 150px;
+text-align: center;
+}
+
+.brand-name{
+    font-size: 80px;
+}
+
+header.marquee h1{
+    font-size: 34px;
+}
+
+.btn-cta{
+    padding:15px 20px;
+    margin: 20px 0 0;
+    background-color: transparent;
+    font-size: 18px;
+    border: 1px solid #fff;
+}
+
+header.marquee .btn-cta:hover{
+    color: #b84d45;
+  background-color: #fff;
+}
+
+/* Footer Styles */
+
+
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+   
+}
+
+@media(max-width:767px) {
+    
+}

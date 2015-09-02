@@ -1,0 +1,174 @@
+{
+  "content": {
+    "localhost": {
+      "active_checks_enabled": "1",
+      "current_attempt": "1",
+      "performance_data": {
+        "rta": "0.036000ms",
+        "pl": "0%"
+      },
+      "last_hard_state": "0",
+      "notifications_enabled": "1",
+      "current_state": "0",
+      "downtimes": {},
+      "plugin_output": "PING OK - Packet loss = 0%, RTA = 0.04 ms",
+      "last_check": "1432828280",
+      "problem_has_been_acknowledged": "0",
+      "last_state_change": "1432723962",
+      "scheduled_downtime_depth": "0",
+      "services": {
+        "HTTP": {
+          "active_checks_enabled": "1",
+          "current_attempt": "4",
+          "performance_data": {
+            "size": "5152B",
+            "time": "0.000689s"
+          },
+          "last_hard_state": "1",
+          "notifications_enabled": "0",
+          "current_state": "1",
+          "downtimes": {},
+          "plugin_output": "HTTP WARNING: HTTP/1.1 403 Forbidden - 5152 bytes in 0.001 second response time",
+          "last_check": "1432828317",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724037",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "PING": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {
+            "rta": "0.036000ms",
+            "pl": "0%"
+          },
+          "last_hard_state": "0",
+          "notifications_enabled": "1",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "PING OK - Packet loss = 0%, RTA = 0.04 ms",
+          "last_check": "1432828176",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724075",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "Swap Usage": {
+          "active_checks_enabled": "1",
+          "current_attempt": "4",
+          "performance_data": {"swap": "0MB"},
+          "last_hard_state": "2",
+          "notifications_enabled": "1",
+          "current_state": "2",
+          "downtimes": {},
+          "plugin_output": "SWAP CRITICAL - 100% free (0 MB out of 0 MB)",
+          "last_check": "1432828200",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724187",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "1432825210",
+          "max_attempts": "4"
+        },
+        "Current Load": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {
+            "load1": 0,
+            "load15": 0,
+            "load5": 0
+          },
+          "last_hard_state": "0",
+          "notifications_enabled": "1",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "OK - load average: 0.00, 0.00, 0.00",
+          "last_check": "1432828362",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432723962",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "Current Users": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {"users": 1},
+          "last_hard_state": "0",
+          "notifications_enabled": "1",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "USERS OK - 1 users currently logged in",
+          "last_check": "1432828133",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724000",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "Root Partition": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {"/": "4537MB"},
+          "last_hard_state": "0",
+          "notifications_enabled": "1",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "DISK OK - free space: / 3115 MB (40% inode=84%):",
+          "last_check": "1432828240",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724112",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "SSH": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {"time": "0.016061s"},
+          "last_hard_state": "0",
+          "notifications_enabled": "0",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "SSH OK - OpenSSH_5.3 (protocol 2.0)",
+          "last_check": "1432828250",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724150",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        },
+        "Total Processes": {
+          "active_checks_enabled": "1",
+          "current_attempt": "1",
+          "performance_data": {},
+          "last_hard_state": "0",
+          "notifications_enabled": "1",
+          "current_state": "0",
+          "downtimes": {},
+          "plugin_output": "PROCS OK: 83 processes with STATE = RSZDT",
+          "last_check": "1432828325",
+          "problem_has_been_acknowledged": "0",
+          "last_state_change": "1432724225",
+          "scheduled_downtime_depth": "0",
+          "comments": {},
+          "last_notification": "0",
+          "max_attempts": "4"
+        }
+      },
+      "comments": {},
+      "last_notification": "0",
+      "max_attempts": "10"
+    }
+  },
+  "success": true
+}
+

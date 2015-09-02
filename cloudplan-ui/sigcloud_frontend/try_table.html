@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>
+
+        SigCloud Management
+
+    </title>
+
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Start Bootstrap Custom CSS -->
+    <link href="css/startbootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/ng-table.min.css" rel="stylesheet" type="text/css">
+    <link href="css/table-try.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="table_try">
+<div class="container" ng-controller="tableCtrl">
+    <table ng-table="tableParams">
+        <tr ng-repeat="user in users">
+            <td data-title="'Name'">{{user.name}}</td>
+            <td data-title="'Age'">{{user.age}}</td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ng-table.min.js"></script>
+<script type="text/javascript" src="js/table_ang.js"></script>
+<script>
+
+</script>
+</body>
+</html>

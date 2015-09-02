@@ -1,0 +1,52 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                               controllers.Application.index
+
+# Navigation
+POST    /login                          controllers.Application.authorize
+GET     /dashboard                      controllers.Application.dashboard
+GET     /cluster/launch/gce             controllers.Application.launchGCECluster
+GET     /cluster/launch/aws             controllers.Application.launchAWSCluster
+GET     /cluster/load                   controllers.Application.loadCluster
+GET     /cluster/configure/:cluster     controllers.Application.configureCluster(cluster)
+GET     /cluster/terminate              controllers.Application.terminateCluster
+GET     /cluster/runscript              controllers.Application.runScriptOnCluster
+GET     /cluster/add                    controllers.Application.addNodes
+GET     /resources/load                 controllers.Application.loadResources
+
+# Resources
+GET     /view/nodes                     controllers.Application.nodes
+GET     /view/nodes/:cluster            controllers.Application.nodesOfCluster(cluster)
+GET     /view/clusters                  controllers.Application.clusters
+GET     /view/images                    controllers.Application.images
+GET     /view/hardwares                 controllers.Application.hardwares
+GET     /view/regions                   controllers.Application.regions
+
+# Database
+GET     /list/nodes                     controllers.Database.listNodes
+GET     /list/images                    controllers.Database.listImages
+GET     /list/hardwares                 controllers.Database.listHardwares
+GET     /list/regions                   controllers.Database.listRegions
+
+# Tasks
+POST    /cluster/launch/gce             controllers.Tasks.launchGCECluster
+POST    /cluster/launch/aws             controllers.Tasks.launchAWSCluster
+POST    /cluster/load                   controllers.Tasks.loadCluster
+POST    /cluster/configure              controllers.Tasks.configureClusterServices
+POST    /node/restart                   controllers.Tasks.restartNode
+POST    /node/terminate                 controllers.Tasks.terminateNode
+POST    /cluster/restart                controllers.Tasks.restartCluster
+POST    /cluster/terminate              controllers.Tasks.terminateCluster
+POST    /cluster/runscript              controllers.Tasks.runScriptOnCluster
+POST    /cluster/add                    controllers.Tasks.addNodes
+POST    /resources/load                 controllers.Tasks.loadResources
+
+# WebSockets
+GET     /socket                         controllers.Socket.socket
+GET     /query                          controllers.Socket.querySocket
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

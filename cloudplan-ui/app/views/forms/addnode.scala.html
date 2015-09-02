@@ -1,0 +1,74 @@
+@(message: String, user: User)
+
+@main(message, user) {
+    <div class="panel col-sm-offset-3 col-sm-6">
+        <div class="panel-heading">
+            <h4>Launch a cluster</h4>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <form action="@routes.Tasks.addNodes" role="form" class="form" method="post">
+                <div class="form-group">
+                    <label class="control-label"><strong>Provider</strong></label>
+                    <select class="form-control" id="selectProvider" name="provider"></select>
+                    <span class="help-block">Select a provider to launch your VMs in</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" name="name" placeholder="Name your cluster">
+                    <span class="help-block">This will be used to identify all associated resources on the cloud</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Image</strong></label>
+                    <select class="form-control" id="selectImage" name="image"></select>
+                    <span class="help-block">Select an image to use in your VMs in</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Region</strong></label>
+                    <select class="form-control" id="selectRegion" name="region"></select>
+                    <span class="help-block">Select a region to host your VMs in. Take care of regional quotas</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Machine</strong></label>
+                    <select class="form-control" id="selectMachine" name="machine"></select>
+                    <span class="help-block">Select a machine type for your cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Network</strong></label>
+                    <select class="form-control" name="network">
+                        <option value="cloudplan">Cloudplan</option>
+                        <option value="sigmoid-private">Sigmoid Private</option>
+                        <option value="default-gce">Default GCE</option>
+                    </select>
+                    <span class="help-block">Select a machine type for your cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Instances</strong></label>
+                    <input type="number" class="form-control" name="instances" placeholder="Number of instances to launch">
+                    <span class="help-block">A minimum of 4 nodes are recommended for a High Availability Mesos cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>Users</strong></label>
+                    <input type="text" class="form-control" name="users" placeholder="Usernames">
+                    <span class="help-block">Names of those who are going to use the cluster</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><strong>SSH Key</strong></label>
+                    <select class="form-control" name="sshKey">
+                        <option value="1">Ajay</option>
+                        <option value="2">Prannoy</option>
+                        <option value="3">Jai</option>
+                        <option value="4">Rahul</option>
+                    </select>
+                    <span class="help-block">Select a machine type for your cluster</span>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="@routes.Assets.at("javascripts/launch.js")" type="text/javascript"></script>
+}

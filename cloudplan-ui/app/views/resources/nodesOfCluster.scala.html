@@ -1,0 +1,68 @@
+@(message: String, socketURL: String, group: String, user: User)
+
+@main(message, user) {
+    <div id="socket" class="panel" data-ws-url="@{socketURL}" data-ws-cluster="@{group}">
+        <div class="panel-heading">
+            <h4>List of nodes</h4>
+            <hr/>
+        </div>
+        <div class="panel-body scroll">
+            <table class="table table-hover table-striped table-responsive">
+                <thead>
+                    <th>Name</th>
+                    <th>Public IP</th>
+                    <th>Region</th>
+                    <th>Hardware</th>
+                </thead>
+                <div id="scroll">
+                    <tbody id="nodes"></tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-body col-sm-2">
+            <h4 class="media-heading">Mesos details</h4>
+            <hr/>
+            <h6 class="media-heading">Masters</h6>
+            <p id="mesos-masters"></p>
+            <h6 class="media-heading">Slaves</h6>
+            <p id="mesos-slaves"></p>
+        </div>
+        <div class="media-body col-sm-2">
+            <h4 class="media-heading">HDFS details</h4>
+            <hr/>
+            <h6 class="media-heading">Namenodes</h6>
+            <p id="hdfs-namenodes"></p>
+            <h6 class="media-heading">Datanodes</h6>
+            <p id="hdfs-datanodes"></p>
+            <h6 class="media-heading">Journalnodes</h6>
+            <p id="hdfs-journalnodes"></p>
+        </div>
+        <div class="media-body col-sm-2">
+            <h4 class="media-heading">Hbase details</h4>
+            <hr/>
+            <h6 class="media-heading">Masters</h6>
+            <p id="hbase-masters"></p>
+            <h6 class="media-heading">Regionservers</h6>
+            <p id="hbase-regionservers"></p>
+        </div>
+        <div class="media-body col-sm-2">
+            <h4 class="media-heading">Ganglia details</h4>
+            <hr/>
+            <h6 class="media-heading">Gmetad</h6>
+            <p id="ganglia-gmetads"></p>
+            <h6 class="media-heading">Gmond</h6>
+            <p id="ganglia-gmonds"></p>
+        </div>
+        <div class="media-body col-sm-2">
+            <h4 class="media-heading">Spark details</h4>
+            <hr/>
+            <h6 class="media-heading">Driver</h6>
+            <p id="spark-drivers"></p>
+        </div>
+    </div>
+
+    <script src="@routes.Assets.at("javascripts/resources/nodesOfCluster.js")" type="text/javascript"></script>
+}

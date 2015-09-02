@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html ng-app = "settings" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>
+
+        SigCloud Management
+
+    </title>
+
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Start Bootstrap Custom CSS -->
+    <link href="css/startbootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/side_accordion.css" rel="stylesheet" type="text/css">
+    <link href="css/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+    <link href="css/manage.css" rel="stylesheet" type="text/css">
+
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Index.html">SigCloud</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Management<b class="caret"></b></a>
+                    <ul  class="dropdown-menu">
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Service_Management.html">Service Management</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Node_Management.html">Node Management</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-newspaper-o"></i> Monitoring <b class="caret"></b></a>
+                    <ul  class="dropdown-menu">
+                        <li class="dropdown-header" style="font-size: medium">
+                            Clusters
+                        </li>
+
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_1">Cluster1</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html#cluster_2">Cluster2</a>
+                        </li>
+                        <li >
+                            <a  href="http://localhost:63342/cloudplan-ui/root/sigcloud_frontend/Monitoring.html">All Clusters</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<a class="btn btn-default" id="menu-toggle"><b>Save<br>Configuration</b></a>
+<div  class="container" id="accordion-main" ng-controller = "SettingsController">
+    <div class="head_main container-fluid col-lg-12" >
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Cluster Management<small>    Pick a Cluster for Configuration</small>
+                <div class="btn-group cluster-panel pull-right" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default package_btn active">
+                        Cluster1
+                    </button>
+                    <button type="button" class="btn btn-default package_btn ">
+                        Cluster2
+                    </button>
+                </div>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!--     <span class="jquery-accordion-menu-label"> 10 </span>-->
+        <div class="content col-lg-3">
+
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu blue ">
+                <div class="jquery-accordion-menu-header">
+                    Services
+                </div>
+                <ul>
+                    <li ng-repeat="service in settings" ng-click="tabs($index)"><a class="tags" href="javascript:void(0)"><img class="img-responsive service_img1" ng-src="{{service.service_img}}"/>    {{service.service_name}}<span ng-show="{{service.service_subparts.length}}" class = 'submenu-indicator' >+</span></a>
+                        <ul  class="submenu" style="display: none;">
+                            <li ng-repeat="subpart in service.service_subparts" ng-click="subtabs($index)"><a href="javascript:void(0)">{{subpart.subpart_name}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="container-fluid col-lg-9 col-md-12 col-sm-12 col-xs-12  description pull-right well" ng-repeat="service in settings"   ng-hide="$index == counter && submit_hide">
+            <div class="row">
+                <h3 class="service_head"><img class="img-responsive service_img2" ng-src="{{service.service_img_main}}"/>    {{service.service_name}}</h3>
+                <div class="col-lg-12" >
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="row panel_head">
+                                <div class = "pull-left col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <b>Configuration</b>
+                                </div>
+                                <div class = "col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+                                    <b>Default Value</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" >
+                            <div class="row bodysmall" ng-repeat = "configuration in service.service_config">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+                                    <button type="button" class="btn btn-default " data-container="body" data-toggle="popover" title="Description" data-trigger="hover" data-placement="right" data-content="{{configuration.desc}}">
+                                        {{configuration.config}}
+                                    </button>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 pull-left ">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" data-container="body" data-toggle="popover" title="Value Type" data-trigger="hover" data-placement="right" data-content="{{configuration.type}}" placeholder="Default: {{configuration.default}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body" ng-repeat = "subpart in service.service_subparts" >
+                            <div class="row">
+                                <h5 class=" sub_head">{{subpart.subpart_name}}</h5>
+                            </div>
+                            <div ng-repeat="subconfig in subpart.subpart_config">
+                                <div class="row bodysmall">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+                                        <button type="button" class="btn btn-default " data-container="body" data-toggle="popover" title="Description" data-trigger="hover" data-placement="right" data-content="{{subconfig.desc}}">
+                                            {{subconfig.config}}
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 pull-left ">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" data-container="body" data-toggle="popover" title="Value Type" data-trigger="hover" data-placement="right" data-content="{{subconfig.type}}" placeholder="Default: {{subconfig.default}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/accordion.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(
+            function(){
+                jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+
+            });
+</script>
+<script type="text/javascript" src="js/management.js"></script>
+
+</body>
+</html>

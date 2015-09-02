@@ -1,0 +1,110 @@
+body{
+    background-image:url(../images/bg1.png);
+}
+
+.fa-newspaper-o{
+    color: #f1c40f;
+    padding-right: 4px;
+
+}
+
+#symbol{
+
+    padding: 4px;
+    position: fixed;
+    bottom: 4%;
+    right: 4%;
+    z-index: 1050;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.jquery-accordion-menu{
+    box-shadow:none;
+
+    padding-top: 15px;
+    padding-bottom: 10px;
+    min-width: 210px;
+}
+
+
+
+.accordion-main{
+    margin-top:80px;
+    margin-bottom: 50px;
+    box-shadow: 0 1px 5px #333;
+
+    background-color: white;
+
+
+}
+
+
+#list_items{
+    text-decoration: none;
+    color:#333;
+}
+
+.well{
+    border-radius: 0px;
+}
+
+
+
+
+
+
+.cluster_boxes{
+    padding:10px;
+}
+
+.cluster_head{
+    padding-top:25px;
+    padding-right:25px;
+    padding-left:25px;
+    padding-bottom:15px;
+}
+
+.cluster_body{
+    padding:5px;
+}
+
+/*#cluster_2,#cluster_1{*/
+    /*display: none;*/
+/*}*/
+
+.service_stat{
+    padding-left: 20px;
+}
+
+.jquery-accordion-menu-header{
+    height:22px;
+
+
+}
+
+.machine-panel{
+    padding: 15px 30px;
+}
+.mech_btn{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.machine_title{
+    padding-top: 10px;
+    line-height: 14px !important;
+    font-size: 20px !important;
+}
+
+.specs{
+    padding-left: 20px;
+    list-style:square ;
+}
+
+@media (max-width: 1200px) {
+    #symbol {
+        display: none !important;
+    }
+}
+

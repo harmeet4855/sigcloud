@@ -1,0 +1,27 @@
+body {
+    padding-top: 70px; }
+}
+
+#main {
+    padding-top: 1em;
+}
+
+.glyphicon-ok {
+    color: #5cb85c;
+    line-height: 1.5;
+}
+
+.close {
+    line-height: 1.5;
+}
+
+.panel .panel-body.scroll {
+    min-height: 9em;
+    max-height: 18em;
+    overflow-y: scroll;
+}
+
+#logo {
+    max-width: 80px;
+    padding-top: 0.5em;
+}

@@ -1,0 +1,8 @@
+@(message: String, socketURL: String, user: User)
+
+@main(message, user) {
+    <div id="socket" class="panel" data-ws-url=@{socketURL}></div>
+    <ul id="lol"></ul>
+
+    <script src="@routes.Assets.at("javascripts/resources/images.js")" type="text/javascript"></script>
+}

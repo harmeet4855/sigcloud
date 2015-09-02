@@ -1,0 +1,26 @@
+@(message: String, user: User)
+
+@main(message, user) {
+    <div class="panel col-sm-offset-3 col-sm-6">
+        <div class="panel-heading">
+            <h4>Load Cloud Resources</h4>
+            <hr/>
+        </div>
+        <div class="panel-body">
+            <form action="@routes.Tasks.loadResources" role="form" class="form" method="post">
+                <div class="form-group">
+                    <label class="control-label"><strong>Provider</strong></label>
+                    <select class="form-control" id="selectProvider" name="provider">
+                        <option value="google-compute-engine">Google Compute Engine</option>
+                        <option value="aws-ec2">Amazon EC2</option>
+                    </select>
+                    <span class="help-block">Select a provider to launch your VMs in</span>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
